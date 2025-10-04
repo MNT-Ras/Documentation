@@ -2,73 +2,268 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Privacy Policy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Privacy Policy & App Support</title>
+  <meta name="color-scheme" content="light dark" />
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      color: #333;
+    :root{
+      --primary:#1565C0;   /* blue */
+      --accent:#FF7A18;    /* orange */
+      --text:#2b2b2b;
+      --card-bg:#ffffff;
+      --muted:#555;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --shadow-strong:0 20px 50px rgba(0,0,0,.12);
+      --maxw:1000px;
     }
-    h1 {
-      color: #1565C0;
+
+    /* Page background gradient */
+    body{
+      margin:0;
+      font-family:-apple-system, BlinkMacSystemFont,"Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,"Open Sans","Helvetica Neue", sans-serif;
+      line-height:1.6;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 100% -10%, rgba(255,122,24,.18), transparent 60%),
+        radial-gradient(1200px 900px at -10% 110%, rgba(21,101,192,.18), transparent 60%),
+        linear-gradient(135deg, rgba(21,101,192,.14), rgba(255,122,24,.14));
+      min-height:100dvh;
     }
-    h2 {
-      margin-top: 2rem;
-      color: #444;
+
+    /* Top navbar */
+    .nav{
+      position:sticky; top:0; z-index:100;
+      backdrop-filter: blur(8px);
+      background: linear-gradient(90deg, rgba(255,255,255,.85), rgba(255,255,255,.75));
+      border-bottom:1px solid rgba(0,0,0,.06);
     }
-    a {
-      color: #1565C0;
+    .nav-inner{
+      max-width:var(--maxw);
+      margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 16px;
     }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px; color:#0f2a5c;
+    }
+    .brand-badge{
+      width:34px; height:34px; border-radius:10px;
+      background:linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow:var(--shadow);
+    }
+    .nav a{ 
+      text-decoration:none; color:#0f2a5c; font-weight:600; padding:8px 12px; border-radius:10px;
+    }
+    .nav a:hover{ background:rgba(21,101,192,.08); }
+
+    /* Hero */
+    .hero{
+      max-width:var(--maxw);
+      margin:28px auto 0;
+      padding:0 16px 8px 16px;
+    }
+    .hero h1{
+      margin:12px 0 6px 0;
+      font-size:clamp(24px, 3vw, 34px);
+      background:linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .hero p{ color:var(--muted); margin:0; }
+
+    /* Card layout */
+    .container{
+      max-width:var(--maxw);
+      margin:18px auto 60px;
+      padding:0 16px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:20px;
+    }
+    @media (min-width: 980px){
+      .container{ grid-template-columns: 2fr 1fr; }
+    }
+    .card{
+      background:var(--card-bg);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+    .card h2{ 
+      margin-top:0;
+      color:#1d3b77;
+    }
+    .card h1{
+      margin-top:0;
+      font-size: clamp(22px, 2.6vw, 28px);
+      color:#1d3b77;
+    }
+    .card a{ color:var(--primary); }
+    .pill{
+      display:inline-block; padding:6px 12px; border-radius:999px;
+      background:linear-gradient(90deg, rgba(21,101,192,.12), rgba(255,122,24,.12));
+      color:#0f2a5c; font-weight:600; font-size:.9rem;
+      margin-bottom:14px;
+    }
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:8px;
+    }
+    @media (min-width:700px){
+      .gallery{ grid-template-columns: repeat(3, 1fr); }
+    }
+    .shot{
+      position:relative; overflow:hidden; border-radius:14px; background:#f5f7fb;
+      box-shadow:var(--shadow);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .shot:hover{ transform: translateY(-2px); box-shadow:var(--shadow-strong); }
+    .shot img{
+      display:block; width:100%; height:240px; object-fit:cover;
+    }
+    .shot .cap{
+      position:absolute; left:10px; bottom:10px;
+      padding:4px 10px; border-radius:999px;
+      background:linear-gradient(90deg, rgba(21,101,192,.9), rgba(255,122,24,.9));
+      color:#fff; font-size:.8rem; font-weight:600;
+      box-shadow:0 6px 18px rgba(0,0,0,.15);
+    }
+
+    /* Footer */
+    .footer{
+      max-width:var(--maxw);
+      margin:30px auto 40px;
+      padding:0 16px; 
+      color:#29406e;
+    }
+    .footer .bar{
+      height:4px; border-radius:999px;
+      background:linear-gradient(90deg, var(--primary), var(--accent));
+      margin-bottom:10px;
+    }
+    .muted{ color:var(--muted); }
+
+    /* Misc */
+    ul{ padding-left:20px; }
+    .spaced > * + *{ margin-top:10px; }
+    .two-up{
+      display:grid; gap:20px; grid-template-columns:1fr;
+    }
+    @media (min-width:900px){
+      .two-up{ grid-template-columns:1fr 1fr; }
+    }
+    .kbd{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; background:#f2f5fb; padding:2px 6px; border-radius:6px; }
   </style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
 
-  <p>Thank you for using our app. Your privacy is important to us. This Privacy Policy explains how we collect, use, and share information when you use our app.</p>
+  <!-- NAV -->
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-badge" aria-hidden="true"></div>
+        <span>App Help Centre</span>
+      </div>
+      <div>
+        <a href="#privacy">Privacy</a>
+        <a href="#support">Support</a>
+        <a href="#screens">Screenshots</a>
+      </div>
+    </div>
+  </nav>
 
-  <h2>1. Information We Collect</h2>
-  <p>We may collect the following information depending on your app usage:</p>
-  <ul>
-    <li>Device information (e.g. device model, operating system)</li>
-    <li>App usage data (e.g. crash logs)</li>
-  </ul>
+  <!-- HERO -->
+  <header class="hero">
+    <h1>Privacy Policy & Support</h1>
+    <p>Your privacy and a great support experience are our priorities.</p>
+  </header>
 
-  <h2>2. How We Use Information</h2>
-  <p>We use collected data to:</p>
-  <ul>
-    <li>Provide and improve app functionality</li>
-    <li>Analyze performance and fix bugs</li>
-    <li>Respond to support requests</li>
-  </ul>
+  <!-- CONTENT -->
+  <main class="container">
 
-  <h2>3. Data Sharing</h2>
-  <p>We do not sell your data. We may share information with trusted third-party services strictly to support app functionality (e.g. analytics or crash reporting).</p>
+    <!-- PRIVACY CARD -->
+    <section id="privacy" class="card">
+      <span class="pill">Privacy Policy</span>
+      <h1>Privacy Policy</h1>
 
-  <h2>4. Data Retention</h2>
-  <p>We do not retain any data</p>
+      <p>Thank you for using our app. Your privacy is important to us. This Privacy Policy explains how we collect, use, and share information when you use our app.</p>
 
-  <h2>5. Your Rights</h2>
-  <p>You may contact us at <a href="mailto:kudzai@kumbahatua.com">kudzi@kumbahatua.com</a> to request access, correction, or deletion of your personal data.</p>
+      <h2>1. Information We Collect</h2>
+      <p>We may collect the following information depending on your app usage:</p>
+      <ul>
+        <li>Device information (e.g. device model, operating system)</li>
+        <li>App usage data (e.g. crash logs)</li>
+      </ul>
 
-  <h2>6. Updates</h2>
-  <p>We may update this policy periodically. Updates will be posted on this page with a revised effective date.</p>
+      <h2>2. How We Use Information</h2>
+      <p>We use collected data to:</p>
+      <ul>
+        <li>Provide and improve app functionality</li>
+        <li>Analyse performance and fix bugs</li>
+        <li>Respond to support requests</li>
+      </ul>
 
-  <p>For questions, contact us at: <a href="mailto:kudzai@kumbahatua.com">kudzi@kumbahatua.com</a></p>
+      <h2>3. Data Sharing</h2>
+      <p>We do not sell your data. We may share information with trusted third-party services strictly to support app functionality (e.g. analytics or crash reporting).</p>
 
-  
-  <h1>App Support</h1>
-  <p>If you need help with our app, please contact us using the details below. We’ll do our best to respond as soon as possible.</p>
+      <h2>4. Data Retention</h2>
+      <p>We do not retain any data.</p>
 
-  <h2>📬 Contact Us</h2>
-  <p>Email: <a href="mailto:kudzai@kumbahatua.com">kudzi@kumbahatua.com</a></p>
+      <h2>5. Your Rights</h2>
+      <p>You may contact us at <a href="mailto:kudzai@kumbahatua.com">kudzi@kumbahatua.com</a> to request access, correction, or deletion of your personal data.</p>
 
-  <p>Thank you for using our app!</p>
-  
+      <h2>6. Updates</h2>
+      <p>We may update this policy periodically. Updates will be posted on this page with a revised effective date.</p>
+
+      <p class="muted">For questions, contact us at: <a href="mailto:kudzai@kumbahatua.com">kudzi@kumbahatua.com</a></p>
+    </section>
+
+    <!-- SUPPORT CARD -->
+    <aside id="support" class="card">
+      <span class="pill">Support</span>
+      <h2>App Support</h2>
+      <p>If you need help with our app, please contact us using the details below. We’ll do our best to respond as soon as possible.</p>
+
+      <div class="spaced">
+        <p><strong>📬 Email:</strong> <a href="mailto:kudzai@kumbahatua.com">kudzi@kumbahatua@example.com</a></p>
+        <p><strong>🔗 Privacy Policy:</strong> <a href="#privacy">View on this page</a></p>
+        <p class="muted">Tip: Include the app version and steps to reproduce any issue.</p>
+      </div>
+    </aside>
+
+    <!-- IMAGE GALLERY CARD (spans full width on small, sits below on large) -->
+    <section id="screens" class="card" style="grid-column: 1 / -1;">
+      <span class="pill">Screenshots</span>
+      <h2>App Screens</h2>
+      <p class="muted">Replace the images below with your own screenshots (recommended sizes: 1242×2688, 1290×2796, or standard App Store sizes). Put files under <span class="kbd">assets/</span> and update paths.</p>
+
+      <div class="gallery">
+        <figure class="shot">
+          <img src="assets/img1.png" alt="Screenshot of the app home screen"/>
+          <figcaption class="cap">Home</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/img2.png" alt="Screenshot of a key feature in action"/>
+          <figcaption class="cap">Feature</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/img3.png" alt="Screenshot of settings screen"/>
+          <figcaption class="cap">Settings</figcaption>
+        </figure>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="bar" aria-hidden="true"></div>
+    <p class="muted">© 2025 Kumbahatua (Pty) Ltd. All rights reserved.</p>
+  </footer>
+
 </body>
-
 </html>
-
